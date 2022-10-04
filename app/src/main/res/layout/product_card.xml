@@ -5,11 +5,13 @@
     android:layout_height="wrap_content"
     android:layout_margin="5dp"
     app:cardBackgroundColor="@color/white"
-    app:cardCornerRadius="8dp"
+    app:cardCornerRadius="12dp"
     app:cardElevation="8dp"
     app:cardMaxElevation="10dp"
+    app:contentPadding="4dp"
     app:cardPreventCornerOverlap="true"
-    app:cardUseCompatPadding="true">
+    app:cardUseCompatPadding="true"
+    android:id="@+id/product_card_view">
 
     <!-- In the above cardview widget cardelevation property will give elevation to your card view
         card corner radius will provide radius to your card view card background color will give
@@ -24,7 +26,7 @@
 
         <!-- ImageVIew to display our Course Image -->
         <ImageView
-            android:id="@+id/idProductIamge"
+            android:id="@+id/idProductImage"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_margin="10dp"
@@ -39,7 +41,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
-            android:layout_toEndOf="@id/idProductIamge"
+            android:layout_toEndOf="@id/idProductImage"
             android:text="Test123"
             android:textColor="@color/black"
             android:textSize="18sp"
@@ -54,7 +56,7 @@
             android:layout_below="@id/idProductName"
             android:layout_marginStart="10dp"
             android:layout_marginTop="20dp"
-            android:layout_toEndOf="@id/idProductIamge"
+            android:layout_toEndOf="@id/idProductImage"
             android:drawablePadding="2dp"
             android:text="ABCD" />
     </RelativeLayout>
