@@ -1,10 +1,12 @@
 package com.example.mealify.ui.home
 
+import android.app.Activity
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.cardview.widget.CardView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -14,6 +16,7 @@ import com.example.mealify.ProductAdapter
 import com.example.mealify.R
 import com.example.mealify.RecipeAdapter
 import com.example.mealify.databinding.FragmentHomeBinding
+import com.example.mealify.databinding.RecipeCardBinding
 import com.example.mealify.ui.products.Products
 
 class HomeFragment : Fragment() {
@@ -36,6 +39,7 @@ class HomeFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+
         val homeViewModel =
             ViewModelProvider(this)[HomeViewModel::class.java]
 
