@@ -48,9 +48,13 @@ class ProductFragment : Fragment() {
         return root
     }
 
+    // This method starts as the view is created (products tab is opened)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        // Initialize the data to be displayed in the cards in the recyclerview
         dataInitialize()
+
+        // Create a layout manager and assign it (and the adapter made in ProductAdapter) to the recyclerview
         val layoutManager = LinearLayoutManager(context)
         rv = view.findViewById(R.id.idProducts)
         rv.layoutManager = layoutManager
@@ -64,6 +68,7 @@ class ProductFragment : Fragment() {
         _binding = null
     }
 
+    // Initialize the data to be displayed in the cards
     private fun dataInitialize(){
         productArrayList = arrayListOf<Products>()
 
@@ -95,6 +100,8 @@ class ProductFragment : Fragment() {
             "name"
         )
 
+
+        // Set the above initialized data to the correct place
         for (i in productImageID.indices) {
             val products = Products(productName[i],productDate[i] ,productImageID[i])
             productArrayList.add(products)
