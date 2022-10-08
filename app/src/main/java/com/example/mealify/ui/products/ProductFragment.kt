@@ -14,8 +14,6 @@ import com.example.mealify.databinding.FragmentProductBinding
 
 class ProductFragment : Fragment() {
 
-    private var _binding: FragmentProductBinding? = null
-
     private lateinit var adapter: ProductAdapter
     private lateinit var rv: RecyclerView
     private lateinit var productArrayList: ArrayList<Products>
@@ -27,24 +25,13 @@ class ProductFragment : Fragment() {
 
     // This property is only valid between onCreateView and
     // onDestroyView.
-    private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val galleryViewModel =
-            ViewModelProvider(this)[ProductViewModel::class.java]
-
-        _binding = FragmentProductBinding.inflate(layoutInflater, container, false)
-        val root: View = binding.root
-
-        val recyclerView: ConstraintLayout = binding.productCardView
-        galleryViewModel.text.observe(viewLifecycleOwner) {
-            recyclerView.getViewById(id)
-        }
-        return root
+        return inflater.inflate(R.layout.fragment_product, container, false)
     }
 
     // This method starts as the view is created (products tab is opened)
@@ -60,11 +47,6 @@ class ProductFragment : Fragment() {
         rv.setHasFixedSize(true)
         adapter = ProductAdapter(productArrayList)
         rv.adapter = adapter
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
     }
 
     // Initialize the data to be displayed in the cards

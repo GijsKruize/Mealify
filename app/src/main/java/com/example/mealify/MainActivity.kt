@@ -1,7 +1,9 @@
 package com.example.mealify
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
+import android.widget.Button
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.navigation.NavigationView
 import androidx.navigation.findNavController
@@ -12,6 +14,8 @@ import androidx.navigation.ui.setupWithNavController
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.appcompat.app.AppCompatActivity
 import com.example.mealify.databinding.ActivityMainBinding
+import com.example.mealify.ui.recipes.RecipeFragment
+import com.example.mealify.ui.recipes.descriptions.DescriptionsFragment
 
 class MainActivity : AppCompatActivity() {
 
@@ -29,7 +33,6 @@ class MainActivity : AppCompatActivity() {
         binding.appBarMain.fab.setOnClickListener { view ->
             Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                 .setAction("Action", null).show()
-
             //val courseRV = findViewById<RecyclerView>(R.id.idProducts)
 
             // Here, we have created new array list and added data to it

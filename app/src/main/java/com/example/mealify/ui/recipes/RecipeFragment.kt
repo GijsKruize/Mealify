@@ -1,12 +1,11 @@
 package com.example.mealify.ui.recipes
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mealify.R
@@ -26,25 +25,14 @@ class RecipeFragment : Fragment() {
 
     // This property is only valid between onCreateView and
     // onDestroyView.
-    private val binding get() = _binding!!
 
+    @SuppressLint("MissingInflatedId")
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-
-        val homeViewModel =
-            ViewModelProvider(this)[RecipeViewModel::class.java]
-
-        _binding = FragmentRecipeBinding.inflate(inflater, container, false)
-        val root: View = binding.root
-
-        val recyclerViewRecipes: ConstraintLayout = binding.recipeCardView
-        homeViewModel.text.observe(viewLifecycleOwner) {
-            recyclerViewRecipes.getViewById(id)
-        }
-        return root
+        return inflater.inflate(R.layout.fragment_recipe, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -61,11 +49,6 @@ class RecipeFragment : Fragment() {
         rv.adapter = recipeAdapter
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
-    }
-
     private fun recipeInitialize(){
         recipeArrayList = arrayListOf<Recipes>()
 
@@ -79,16 +62,14 @@ class RecipeFragment : Fragment() {
             R.drawable.banana
         )
         recipeName = arrayOf(
-            "name",
-            "name",
-            "name",
-            "name",
-            "name",
-            "name",
-            "name"
+            "name1",
+            "name2",
+            "name3",
+            "name4",
+            "name5",
+            "name6",
+            "name7"
         )
-
-
         // Set the above initialized data to the correct place
         for (i in recipeImageID.indices) {
             val recipes = Recipes(recipeName[i], recipeImageID[i])

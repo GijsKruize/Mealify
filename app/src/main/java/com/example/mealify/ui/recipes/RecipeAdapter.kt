@@ -5,15 +5,19 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mealify.R
+import com.example.mealify.ui.recipes.descriptions.DescriptionsFragment
 
 class RecipeAdapter(private val recipeList: ArrayList<Recipes>) :
     RecyclerView.Adapter<RecipeAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         // to inflate the layout for each item of recycler view.
-        val view: View = LayoutInflater.from(parent.context).inflate(R.layout.recipe_card, parent, false)
+        val view: View =
+            LayoutInflater.from(parent.context).inflate(R.layout.recipe_card, parent, false)
         return ViewHolder(view)
     }
 
@@ -21,6 +25,13 @@ class RecipeAdapter(private val recipeList: ArrayList<Recipes>) :
         val currentRecipe = recipeList[position]
         holder.recipeImage.setImageResource(currentRecipe.recipeImage)
         holder.recipeName.text = currentRecipe.recipeName
+
+        holder.itemView.setOnClickListener { v ->
+            val activity = v!!.context as AppCompatActivity
+            val descriptionsFragment = DescriptionsFragment()
+            activity.supportFragmentManager.beginTransaction()
+                .replace(R.id.recipe_card_view, descriptionsFragment).addToBackStack(null).commit()
+        }
     }
 
     override fun getItemCount(): Int {
@@ -33,8 +44,6 @@ class RecipeAdapter(private val recipeList: ArrayList<Recipes>) :
         val recipeImage: ImageView = itemView.findViewById(R.id.idRecipeImage)
         val recipeName: TextView = itemView.findViewById(R.id.idRecipeName)
     }
-
-
 
 
 }
