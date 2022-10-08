@@ -26,11 +26,14 @@ class RecipeAdapter(private val recipeList: ArrayList<Recipes>) :
         holder.recipeImage.setImageResource(currentRecipe.recipeImage)
         holder.recipeName.text = currentRecipe.recipeName
 
+        //OnClickListener to go from recipe list to description of recipe
         holder.itemView.setOnClickListener { v ->
             val activity = v!!.context as AppCompatActivity
             val descriptionsFragment = DescriptionsFragment()
+
             activity.supportFragmentManager.beginTransaction()
                 .replace(R.id.recipe_card_view, descriptionsFragment).addToBackStack(null).commit()
+
         }
     }
 
@@ -43,7 +46,7 @@ class RecipeAdapter(private val recipeList: ArrayList<Recipes>) :
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val recipeImage: ImageView = itemView.findViewById(R.id.idRecipeImage)
         val recipeName: TextView = itemView.findViewById(R.id.idRecipeName)
+
+
     }
-
-
 }
