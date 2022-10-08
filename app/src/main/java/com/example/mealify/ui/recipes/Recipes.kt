@@ -1,4 +1,4 @@
-package com.example.mealify.ui.home
+package com.example.mealify.ui.recipes
 
 data class Recipes(
     var recipeName: String,

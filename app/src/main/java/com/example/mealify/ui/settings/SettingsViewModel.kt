@@ -1,13 +1,13 @@
-package com.example.mealify.ui.home
+package com.example.mealify.ui.settings
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
-class HomeViewModel : ViewModel() {
+class SettingsViewModel : ViewModel() {
 
     private val _text = MutableLiveData<String>().apply {
-        value = "This is home Fragment"
+        value = "Settings template"
     }
     val text: LiveData<String> = _text
 }

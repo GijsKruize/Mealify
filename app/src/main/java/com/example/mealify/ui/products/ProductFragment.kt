@@ -9,13 +9,12 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.mealify.ProductAdapter
 import com.example.mealify.R
-import com.example.mealify.databinding.FragmentGalleryBinding
+import com.example.mealify.databinding.FragmentProductBinding
 
 class ProductFragment : Fragment() {
 
-    private var _binding: FragmentGalleryBinding? = null
+    private var _binding: FragmentProductBinding? = null
 
     private lateinit var adapter: ProductAdapter
     private lateinit var rv: RecyclerView
@@ -38,7 +37,7 @@ class ProductFragment : Fragment() {
         val galleryViewModel =
             ViewModelProvider(this)[ProductViewModel::class.java]
 
-        _binding = FragmentGalleryBinding.inflate(layoutInflater, container, false)
+        _binding = FragmentProductBinding.inflate(layoutInflater, container, false)
         val root: View = binding.root
 
         val recyclerView: ConstraintLayout = binding.productCardView

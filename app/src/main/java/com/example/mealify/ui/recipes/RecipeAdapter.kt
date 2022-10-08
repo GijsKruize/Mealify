@@ -1,4 +1,4 @@
-package com.example.mealify
+package com.example.mealify.ui.recipes
 
 import android.view.LayoutInflater
 import android.view.View
@@ -6,10 +6,11 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.mealify.ui.home.Recipes
+import com.example.mealify.R
 
 class RecipeAdapter(private val recipeList: ArrayList<Recipes>) :
     RecyclerView.Adapter<RecipeAdapter.ViewHolder>() {
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         // to inflate the layout for each item of recycler view.
         val view: View = LayoutInflater.from(parent.context).inflate(R.layout.recipe_card, parent, false)
@@ -32,6 +33,8 @@ class RecipeAdapter(private val recipeList: ArrayList<Recipes>) :
         val recipeImage: ImageView = itemView.findViewById(R.id.idRecipeImage)
         val recipeName: TextView = itemView.findViewById(R.id.idRecipeName)
     }
+
+
 
 
 }

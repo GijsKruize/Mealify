@@ -1,34 +1,28 @@
-package com.example.mealify.ui.home
+package com.example.mealify.ui.recipes
 
-import android.app.Activity
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
-import androidx.cardview.widget.CardView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.mealify.ProductAdapter
 import com.example.mealify.R
-import com.example.mealify.RecipeAdapter
-import com.example.mealify.databinding.FragmentHomeBinding
-import com.example.mealify.databinding.RecipeCardBinding
-import com.example.mealify.ui.products.Products
+import com.example.mealify.databinding.FragmentRecipeBinding
 
-class HomeFragment : Fragment() {
+@Suppress("DEPRECATION")
+class RecipeFragment : Fragment() {
 
-    private var _binding: FragmentHomeBinding? = null
+    private var _binding: FragmentRecipeBinding? = null
 
-    private lateinit var adapter: RecipeAdapter
+    private lateinit var recipeAdapter: RecipeAdapter
     private lateinit var rv: RecyclerView
     private lateinit var recipeArrayList: ArrayList<Recipes>
 
     private lateinit var recipeImageID : Array<Int>
-    lateinit var recipeName : Array<String>
+    private lateinit var recipeName : Array<String>
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -41,9 +35,9 @@ class HomeFragment : Fragment() {
     ): View {
 
         val homeViewModel =
-            ViewModelProvider(this)[HomeViewModel::class.java]
+            ViewModelProvider(this)[RecipeViewModel::class.java]
 
-        _binding = FragmentHomeBinding.inflate(inflater, container, false)
+        _binding = FragmentRecipeBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
         val recyclerViewRecipes: ConstraintLayout = binding.recipeCardView
@@ -63,8 +57,8 @@ class HomeFragment : Fragment() {
         rv = view.findViewById(R.id.idRecipes)
         rv.layoutManager = layoutManager
         rv.setHasFixedSize(true)
-        adapter = RecipeAdapter(recipeArrayList)
-        rv.adapter = adapter
+        recipeAdapter = RecipeAdapter(recipeArrayList)
+        rv.adapter = recipeAdapter
     }
 
     override fun onDestroyView() {

@@ -1,4 +1,4 @@
-package com.example.mealify
+package com.example.mealify.ui.products
 
 import android.view.LayoutInflater
 import android.view.View
@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.mealify.ui.products.Products
+import com.example.mealify.R
 
 class ProductAdapter(private val productList: ArrayList<Products>) :
     RecyclerView.Adapter<ProductAdapter.ViewHolder>() {
