@@ -18,9 +18,7 @@ class RecipeFragment : Fragment() {
 
     private lateinit var recipeImageID: Array<Int>
     private lateinit var recipeName: Array<String>
-
-    // This property is only valid between onCreateView and
-    // onDestroyView.
+    private lateinit var recipeDescription: Array<String>
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -45,7 +43,7 @@ class RecipeFragment : Fragment() {
         rv.adapter = recipeAdapter
     }
 
-
+    //Pretty self-explanatory
     private fun recipeInitialize() {
         recipeArrayList = arrayListOf()
 
@@ -67,9 +65,19 @@ class RecipeFragment : Fragment() {
             "Recipe 6",
             "HOW DOES THE APP HANDLE THE USE OF EXTREMELY LONG RECIPE NAMES LIKE THIS ONE AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
         )
+
+        recipeDescription = arrayOf(
+            "Description 1",
+            "Description 2",
+            "Description 3",
+            "Description 4",
+            "Description 5",
+            "Description 6",
+            "EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE"
+        )
         // Set the above initialized data to the correct place
         for (i in recipeImageID.indices) {
-            val recipes = Recipes(recipeName[i], recipeImageID[i])
+            val recipes = Recipes(recipeName[i], recipeImageID[i], recipeDescription[i])
             recipeArrayList.add(recipes)
         }
     }

@@ -17,6 +17,7 @@ class DescriptionsFragment : Fragment() {
 
     private lateinit var title: TextView
     private lateinit var image: ImageView
+    private lateinit var description: TextView
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -25,14 +26,17 @@ class DescriptionsFragment : Fragment() {
         val v =  inflater.inflate(R.layout.fragment_descriptions, container, false)
         title = v.findViewById(R.id.recipeDescTitleID)
         image = v.findViewById(R.id.recipeDescImageID)
+        description = v.findViewById(R.id.recipeDescDescID)
 
         //Receive the bundle send in RecipeAdapter
         var recipeName = arguments?.getString("recipeName")!!.toString()
         var recipeImage = arguments?.getInt("recipeImage")!!.toInt()
+        var recipeDescription = arguments?.getString("recipeDesc")!!.toString()
 
         // Set title and image to the received bundle items
         title.text = recipeName
         image.setImageResource(recipeImage)
+        description.text = recipeDescription
         return v
     }
 
