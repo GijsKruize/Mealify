@@ -56,7 +56,7 @@ class ProductFragment : Fragment() {
         productImageID = arrayOf(
             R.drawable.banana,
             R.drawable.banana,
-            R.drawable.banana,
+            R.drawable.steak,
             R.drawable.banana,
             R.drawable.banana,
             R.drawable.banana,
