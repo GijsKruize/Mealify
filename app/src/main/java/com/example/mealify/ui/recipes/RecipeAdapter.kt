@@ -1,11 +1,12 @@
 package com.example.mealify.ui.recipes
 
+import android.content.Intent
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mealify.R
@@ -16,9 +17,9 @@ class RecipeAdapter(private val recipeList: ArrayList<Recipes>) :
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         // to inflate the layout for each item of recycler view.
-        val view: View =
+        val itemView: View =
             LayoutInflater.from(parent.context).inflate(R.layout.recipe_card, parent, false)
-        return ViewHolder(view)
+        return ViewHolder(itemView)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
@@ -28,12 +29,20 @@ class RecipeAdapter(private val recipeList: ArrayList<Recipes>) :
 
         //OnClickListener to go from recipe list to description of recipe
         holder.itemView.setOnClickListener { v ->
+
+            //Create the context
             val activity = v!!.context as AppCompatActivity
             val descriptionsFragment = DescriptionsFragment()
 
+            //Create a bundle of data to be sent
+            val bundle = Bundle()
+            bundle.putString("recipeName", currentRecipe.recipeName)
+            bundle.putInt("recipeImage", currentRecipe.recipeImage)
+            descriptionsFragment.arguments = bundle
+
+            //Change the RecipeFragment to DescriptionFragment
             activity.supportFragmentManager.beginTransaction()
                 .replace(R.id.recipe_card_view, descriptionsFragment).addToBackStack(null).commit()
-
         }
     }
 

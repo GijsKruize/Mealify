@@ -1,17 +1,13 @@
 package com.example.mealify.ui.recipes
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.cardview.widget.CardView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mealify.R
-import com.example.mealify.ui.detailing.RecipeDetailingActivity
-import com.example.mealify.ui.recipes.descriptions.DescriptionsFragment
 
 @Suppress("DEPRECATION")
 class RecipeFragment : Fragment() {
@@ -31,8 +27,7 @@ class RecipeFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val v = inflater.inflate(R.layout.fragment_recipe, container, false)
-        return v
+        return inflater.inflate(R.layout.fragment_recipe, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -48,11 +43,11 @@ class RecipeFragment : Fragment() {
         rv.setHasFixedSize(true)
         recipeAdapter = RecipeAdapter(recipeArrayList)
         rv.adapter = recipeAdapter
-
     }
 
+
     private fun recipeInitialize() {
-        recipeArrayList = arrayListOf<Recipes>()
+        recipeArrayList = arrayListOf()
 
         recipeImageID = arrayOf(
             R.drawable.banana,
@@ -64,13 +59,13 @@ class RecipeFragment : Fragment() {
             R.drawable.banana
         )
         recipeName = arrayOf(
-            "name1",
-            "name2",
-            "name3",
-            "name4",
-            "name5",
-            "name6",
-            "name7"
+            "Recipe 1",
+            "Recipe 2",
+            "Recipe 3",
+            "Recipe 4",
+            "Recipe 5",
+            "Recipe 6",
+            "HOW DOES THE APP HANDLE THE USE OF EXTREMELY LONG RECIPE NAMES LIKE THIS ONE AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
         )
         // Set the above initialized data to the correct place
         for (i in recipeImageID.indices) {
