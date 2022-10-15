@@ -4,13 +4,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mealify.R
-import com.example.mealify.databinding.FragmentProductBinding
+import com.example.mealify.data.generateProductsArray
 
 class ProductFragment : Fragment() {
 
@@ -51,17 +49,11 @@ class ProductFragment : Fragment() {
 
     // Initialize the data to be displayed in the cards
     private fun dataInitialize(){
+        val readurl = "https://test.nl/"
         productArrayList = arrayListOf<Products>()
 
-        productImageID = arrayOf(
-            R.drawable.banana,
-            R.drawable.banana,
-            R.drawable.steak,
-            R.drawable.banana,
-            R.drawable.banana,
-            R.drawable.banana,
-            R.drawable.banana
-        )
+        productImageID = generateImageArray(readurl)
+
         productDate = arrayOf(
             "date",
             "date",
@@ -71,15 +63,7 @@ class ProductFragment : Fragment() {
             "date",
             "date"
         )
-        productName = arrayOf(
-            "name",
-            "name",
-            "name",
-            "name",
-            "name",
-            "name",
-            "name"
-        )
+        productName = generateProductsArray(readurl) //TODO
 
 
         // Set the above initialized data to the correct place
