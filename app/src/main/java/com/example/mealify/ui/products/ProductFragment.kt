@@ -8,7 +8,9 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mealify.R
-import com.example.mealify.data.generateProductsArray
+import com.example.mealify.data.ProductGenerator.generateImageArray
+import com.example.mealify.data.ProductGenerator.generateProductsArray
+
 
 class ProductFragment : Fragment() {
 
@@ -49,21 +51,19 @@ class ProductFragment : Fragment() {
 
     // Initialize the data to be displayed in the cards
     private fun dataInitialize(){
-        val readurl = "https://test.nl/"
+        val readurl = "https://www.bluebears.nl/test/"
         productArrayList = arrayListOf<Products>()
 
-        productImageID = generateImageArray(readurl)
+        productImageID = arrayOf(
+            R.drawable.banana,
+            R.drawable.banana
+        )
 
         productDate = arrayOf(
             "date",
-            "date",
-            "date",
-            "date",
-            "date",
-            "date",
             "date"
         )
-        productName = generateProductsArray(readurl) //TODO
+        productName = generateProductsArray(readurl) //
 
 
         // Set the above initialized data to the correct place
