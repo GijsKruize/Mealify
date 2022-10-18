@@ -6,8 +6,11 @@ import java.io.InputStream
 import java.net.URL
 
 object ImageGenerator {
-    private fun getWebImage(url_input: String): Bitmap? {
+    private val bitmapArray = ArrayList<Bitmap>()
+
+    private fun addWebImage(url_input: String) {
         val url = URL(url_input)
-        return BitmapFactory.decodeStream(url.openConnection().getInputStream())
+        val bitmap = BitmapFactory.decodeStream(url.openConnection().getInputStream())
+        bitmapArray.add(bitmap)
     }
 }
