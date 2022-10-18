@@ -26,9 +26,9 @@ class MainActivity : AppCompatActivity() {
 
         setSupportActionBar(binding.appBarMain.toolbar)
 
-        binding.appBarMain.fab.setOnClickListener { view ->
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                .setAction("Action", null).show()
+        binding.appBarMain.fab.setOnClickListener {
+            finish()
+            startActivity(intent)
             //val courseRV = findViewById<RecyclerView>(R.id.idProducts)
 
             // Here, we have created new array list and added data to it

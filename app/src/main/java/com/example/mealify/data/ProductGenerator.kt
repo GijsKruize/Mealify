@@ -1,6 +1,8 @@
 package com.example.mealify.data
 
-import org.jsoup.examples
+import org.jsoup.Jsoup
+import java.net.URL
+import javax.net.ssl.HttpsURLConnection
 
 
 object ProductGenerator {
@@ -28,6 +30,6 @@ object ProductGenerator {
         for (i in 1..amountProducts){
             imageArray.plusElement("R.drawable."+productsArray[i])
         }
-        return  imageArray
+        return imageArray
     }
 }
