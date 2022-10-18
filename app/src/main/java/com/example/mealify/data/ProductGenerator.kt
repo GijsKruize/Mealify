@@ -1,19 +1,16 @@
 package com.example.mealify.data
 
-import org.jsoup.examples
+import org.jsoup.Jsoup
+import org.jsoup.nodes.Document
+
+
 
 
 object ProductGenerator {
     private fun webPageReader(input: String): String {
-        val url = URL(input)
-        val urlConnection = url.openConnection() as HttpsURLConnection
 
-        Jsoup.parse(htmlString).title()
-        try {
-            return urlConnection.inputStream.bufferedReader().readText()
-        } finally {
-            urlConnection.disconnect()
-        }
+        val doc : Document = Jsoup.connect(input).get()
+        return doc.select("p").text()
     }
 
      fun generateProductsArray(input: String): Array<String> {
