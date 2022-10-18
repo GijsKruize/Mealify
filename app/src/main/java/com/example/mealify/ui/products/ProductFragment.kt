@@ -8,7 +8,6 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mealify.R
-import com.example.mealify.data.ProductGenerator.generateImageArray
 import com.example.mealify.data.ProductGenerator.generateProductsArray
 
 
@@ -55,11 +54,19 @@ class ProductFragment : Fragment() {
         productArrayList = arrayListOf<Products>()
 
         productImageID = arrayOf(
+            R.drawable.apple,
             R.drawable.banana,
-            R.drawable.banana
+            R.drawable.aubergine,
+            R.drawable.cabbage,
+            R.drawable.pear,
+            R.drawable.bellpepper
         )
 
         productDate = arrayOf(
+            "date",
+            "date",
+            "date",
+            "date",
             "date",
             "date"
         )

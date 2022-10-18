@@ -49,7 +49,7 @@ class RecipeFragment : Fragment() {
 
         recipeImageID = arrayOf(
             R.drawable.banana,
-            R.drawable.steak,
+            R.drawable.carrot,
             R.drawable.banana,
             R.drawable.banana,
             R.drawable.banana,
