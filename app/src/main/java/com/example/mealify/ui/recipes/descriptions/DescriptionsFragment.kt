@@ -30,6 +30,7 @@ class DescriptionsFragment : Fragment() {
 
         //Receive the bundle send in RecipeAdapter
         var recipeName = arguments?.getString("recipeName")!!.toString()
+        Toast.makeText(context, recipeName, Toast.LENGTH_SHORT).show()
         var recipeImage = arguments?.getInt("recipeImage")!!.toInt()
         var recipeDescription = arguments?.getString("recipeDesc")!!.toString()
 
