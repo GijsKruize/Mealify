@@ -1,8 +1,9 @@
 package com.example.mealify.data
 
-import android.text.BoringLayout
+
 import com.example.mealify.R
-import com.example.mealify.data.ProductGenerator.generateProductsArray
+import com.example.mealify.data.ProductGenerator.genProductKeys
+import com.example.mealify.data.ProductGenerator.generateProductsArray as generateProductsArray1
 
 object RecipeGenerator {
     val readurl: String = "test"
@@ -23,8 +24,8 @@ object RecipeGenerator {
     val allRecipeData: Array<RecipeData> = arrayOf(Salad, Salad1)
 
 
-    fun checkPossible() {
-        val currentIngredients = arrayOf("apple", "pear", "lettuce")
+    fun checkPossible(input: String): Array<RecipeData> {
+        val currentIngredients = genProductKeys(input)
         var possibleRecipeData: Array<RecipeData> = emptyArray()
         for (item1 in allRecipeData) {
             var hasAllIngredientsL = emptyArray<Boolean>()
@@ -33,11 +34,39 @@ object RecipeGenerator {
                 for (item3 in currentIngredients)
                     if (item2 == item3)
                         hasIngredientL += true
-                hasAllIngredientsL += hasIngredientL.any(it = true)
+                hasAllIngredientsL += hasIngredientL.contains(true)
             }
-            if (hasAllIngredientsL.any(it = true)) possibleRecipeData += item1
+            if (!hasAllIngredientsL.contains(false)) possibleRecipeData += item1
         }
+        return possibleRecipeData
     }
+
+    fun genRecipeNames(input: String): Array<String> {
+        val possibleRecipeData = checkPossible(input)
+        var recipeNames : Array<String> = emptyArray()
+        for(item in possibleRecipeData){
+            recipeNames += item.name
+        }
+        return recipeNames
+    }
+
+    fun genRecipePics(input: String): Array<Int> {
+        val possibleRecipeData = checkPossible(input)
+        var recipePics : Array<Int> = emptyArray()
+        for(item in possibleRecipeData){
+            recipePics += item.image
+        }
+        return recipePics
+    }
+
+    fun genRecipeDescription(input: String): Array<String> {
+        val possibleRecipeData = checkPossible(input)
+        var recipeDescription : Array<String> = emptyArray()
+        for(item in possibleRecipeData){
+            recipeDescription += item.description
+        }
+        return recipeDescription
+    }
+
+
 }
-
-

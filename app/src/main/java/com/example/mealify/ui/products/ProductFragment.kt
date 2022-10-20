@@ -8,6 +8,8 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mealify.R
+import com.example.mealify.data.ProductGenerator.genProductNames
+import com.example.mealify.data.ProductGenerator.genProductPics
 import com.example.mealify.data.ProductGenerator.generateProductsArray
 
 
@@ -53,24 +55,12 @@ class ProductFragment : Fragment() {
         val readurl = "https://www.bluebears.nl/test/"
         productArrayList = arrayListOf<Products>()
 
-        productImageID = arrayOf(
-            R.drawable.apple,
-            R.drawable.banana,
-            R.drawable.aubergine,
-            R.drawable.cabbage,
-            R.drawable.pear,
-            R.drawable.bellpepper
-        )
+        productImageID = genProductPics(readurl)
 
-        productDate = arrayOf(
-            "date",
-            "date",
-            "date",
-            "date",
-            "date",
-            "date"
-        )
-        productName = generateProductsArray(readurl) //
+
+        productDate = genProductNames(readurl)
+
+        productName = genProductNames(readurl) //
 
 
         // Set the above initialized data to the correct place

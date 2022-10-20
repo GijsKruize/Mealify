@@ -8,6 +8,9 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mealify.R
+import com.example.mealify.data.RecipeGenerator.genRecipeDescription
+import com.example.mealify.data.RecipeGenerator.genRecipeNames
+import com.example.mealify.data.RecipeGenerator.genRecipePics
 
 @Suppress("DEPRECATION")
 class RecipeFragment : Fragment() {
@@ -45,36 +48,12 @@ class RecipeFragment : Fragment() {
 
     //Pretty self-explanatory
     private fun recipeInitialize() {
+        val input : String = "test"
         recipeArrayList = arrayListOf()
 
-        recipeImageID = arrayOf(
-            R.drawable.banana,
-            R.drawable.carrot,
-            R.drawable.banana,
-            R.drawable.banana,
-            R.drawable.banana,
-            R.drawable.banana,
-            R.drawable.banana
-        )
-        recipeName = arrayOf(
-            "Recipe 1",
-            "Recipe 2",
-            "Recipe 3",
-            "Recipe 4",
-            "Recipe 5",
-            "Recipe 6",
-            "HOW DOES THE APP HANDLE THE USE OF EXTREMELY LONG RECIPE NAMES LIKE THIS ONE AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-        )
-
-        recipeDescription = arrayOf(
-            "Description 1",
-            "Description 2",
-            "Description 3",
-            "Description 4",
-            "Description 5",
-            "Description 6",
-            "EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE"
-        )
+        recipeImageID = genRecipePics(input)
+        recipeName = genRecipeNames(input)
+        recipeDescription = genRecipeDescription(input)
         // Set the above initialized data to the correct place
         for (i in recipeImageID.indices) {
             val recipes = Recipes(recipeName[i], recipeImageID[i], recipeDescription[i])
