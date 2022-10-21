@@ -18,7 +18,8 @@
         android:textSize="22sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:text="Template"/>
 
     <ImageView
         android:id="@+id/recipeDescImageID"
@@ -32,6 +33,7 @@
         app:layout_constraintTop_toBottomOf="@+id/recipeDescTitleID" />
 
     <TextView
+        android:text="Template 2"
         android:id="@+id/recipeDescDescID"
         android:layout_width="match_parent"
         android:layout_height="0dp"

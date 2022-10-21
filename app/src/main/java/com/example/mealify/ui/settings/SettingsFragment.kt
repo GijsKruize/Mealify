@@ -16,6 +16,9 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
+import com.bumptech.glide.request.RequestOptions
+import com.bumptech.glide.signature.ObjectKey
 import com.example.mealify.R
 import com.example.mealify.databinding.FragmentSettingsBinding
 import kotlinx.coroutines.*
@@ -40,7 +43,6 @@ class SettingsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         //val captureUrl = "https://i.imgur.com/4HFRb2z.jpg"
         val captureUrl = "http://192.168.178.66/capture"
         imageView = view.findViewById(R.id.captureImg)
@@ -48,18 +50,29 @@ class SettingsFragment : Fragment() {
 
         try {
             button.setOnClickListener {
-                Glide.with(this@SettingsFragment.requireContext())
-                    .asBitmap()
-                    .load(captureUrl)
-                    .into(imageView)
+                try {
+                    Glide.with(imageView.context)
+                        .clear(imageView)
+                } catch (e: java.lang.Exception) {
+                    e.printStackTrace()
+                }
+                try {
+                    Glide.with(this@SettingsFragment.requireContext())
+                        .load(captureUrl)
+                        .apply(RequestOptions.skipMemoryCacheOf(true))
+                        .apply(RequestOptions.diskCacheStrategyOf(DiskCacheStrategy.NONE))
+                        .into(imageView)
+                } catch (e: java.lang.Exception) {
+                    e.printStackTrace()
+                }
             }
         } catch (e: Exception) {
             e.printStackTrace()
         }
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
+    override fun onDestroy() {
+        super.onDestroy()
         try {
             Glide.with(imageView.context).clear(imageView)
         } catch (e: java.lang.Exception) {

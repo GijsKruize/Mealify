@@ -35,7 +35,11 @@ class DescriptionsFragment : Fragment() {
         var recipeDescription = arguments?.getString("recipeDesc")!!.toString()
 
         // Set title and image to the received bundle items
-        title.text = recipeName
+        //try {
+        //    title.text = recipeName
+        //} catch (e: Exception) {
+        //    e.printStackTrace()
+        //}
         image.setImageResource(recipeImage)
         description.text = recipeDescription
         return v

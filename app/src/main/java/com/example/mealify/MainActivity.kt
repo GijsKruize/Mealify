@@ -27,6 +27,7 @@ class MainActivity : AppCompatActivity() {
         setSupportActionBar(binding.appBarMain.toolbar)
 
         binding.appBarMain.fab.setOnClickListener {
+            val intent = intent
             finish()
             startActivity(intent)
             //val courseRV = findViewById<RecyclerView>(R.id.idProducts)
