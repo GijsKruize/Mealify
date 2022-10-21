@@ -7,8 +7,6 @@ import com.google.cloud.vision.v1.Image
 import com.google.cloud.vision.v1.ImageAnnotatorClient
 import com.google.protobuf.ByteString
 
-
-
 import java.io.IOException
 import java.io.File
 

@@ -5,6 +5,7 @@ import com.example.mealify.R
 data class RecipeData(
     var name: String,
     var ingredients: Array<String>,
+    var actIngredients: String,
     var time: String,
     var image: Int,
     var description: String
