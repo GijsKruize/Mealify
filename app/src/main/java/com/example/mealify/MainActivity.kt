@@ -30,28 +30,6 @@ class MainActivity : AppCompatActivity() {
             val intent = intent
             finish()
             startActivity(intent)
-            //val courseRV = findViewById<RecyclerView>(R.id.idProducts)
-
-            // Here, we have created new array list and added data to it
-            //val courseModelArrayList: ArrayList<ProductModel> = ArrayList<ProductModel>()
-            //courseModelArrayList.add(ProductModel("DSA in Java", "a", R.drawable.banana))
-            //courseModelArrayList.add(ProductModel("Java Course", "a", R.drawable.banana))
-            //courseModelArrayList.add(ProductModel("C++ Course", "a", R.drawable.banana))
-            //courseModelArrayList.add(ProductModel("DSA in C++", "a", R.drawable.banana))
-            //courseModelArrayList.add(ProductModel("Kotlin for Android", "a", R.drawable.banana))
-            //courseModelArrayList.add(ProductModel("Java for Android", "a", R.drawable.banana))
-            //courseModelArrayList.add(ProductModel("HTML and CSS", "a", R.drawable.banana))
-
-            // we are initializing our adapter class and passing our arraylist to it.
-            //val courseAdapter = ProductAdapter(this, courseModelArrayList)
-
-            // below line is for setting a layout manager for our recycler view.
-            // here we are creating vertical list so we will provide orientation as vertical
-            //val linearLayoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
-
-            // in below two lines we are setting layoutmanager and adapter to our recycler view.
-            //courseRV.layoutManager = linearLayoutManager
-            //courseRV.adapter = courseAdapter
 
         }
         val drawerLayout: DrawerLayout = binding.drawerLayout

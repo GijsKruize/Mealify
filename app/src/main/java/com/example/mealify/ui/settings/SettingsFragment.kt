@@ -21,6 +21,7 @@ import com.bumptech.glide.request.RequestOptions
 import com.bumptech.glide.signature.ObjectKey
 import com.example.mealify.R
 import com.example.mealify.databinding.FragmentSettingsBinding
+import com.example.mealify.gooogleVision.callAPI
 import kotlinx.coroutines.*
 import java.io.File
 import java.io.FileOutputStream
@@ -50,6 +51,8 @@ class SettingsFragment : Fragment() {
 
         try {
             button.setOnClickListener {
+                var test : Array<String> = emptyArray()
+                callAPI(test)
                 try {
                     Glide.with(imageView.context)
                         .clear(imageView)
