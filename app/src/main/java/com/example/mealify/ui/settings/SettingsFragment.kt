@@ -55,8 +55,8 @@ class SettingsFragment : Fragment() {
 
         try {
             button.setOnClickListener {
-                var test : Array<String> = emptyArray()
-                callAPI(test)
+                // var test : Array<String> = emptyArray()
+                // callAPI(test)
                 try {
                     Glide.with(imageView.context)
                         .clear(imageView)
