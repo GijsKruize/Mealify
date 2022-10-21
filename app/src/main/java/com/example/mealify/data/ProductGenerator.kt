@@ -80,7 +80,7 @@ object ProductGenerator {
     )
 
     private fun webPageReader(input: String): String {
-        return "apple,banana,cucumber,lettuce,pear"
+        return "apple,banana,cucumber,lettuce,tomato,potato"
     }
     fun genProductKeys(input: String): Array<String>{
         return webPageReader(input).split(",").toTypedArray()
