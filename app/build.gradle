@@ -23,6 +23,12 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+    configurations {
+        all { // You should exclude one of them not both of them
+            exclude group: "com.common.annotations.Beta", module: "jetified-guava-20.0"
+            exclude group: "com.common.annotations.Beta", module: "jetified-guava-jdk5-17.0"
+        }
+    }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8

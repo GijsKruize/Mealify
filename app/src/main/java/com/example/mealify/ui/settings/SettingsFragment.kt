@@ -6,6 +6,7 @@ import android.graphics.BitmapFactory
 import android.net.Uri
 import android.os.Bundle
 import android.os.Environment
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -23,6 +24,7 @@ import com.example.mealify.R
 import com.example.mealify.databinding.FragmentSettingsBinding
 import com.example.mealify.gooogleVision.callAPI
 import kotlinx.coroutines.*
+import org.jsoup.parser.Tag
 import java.io.File
 import java.io.FileOutputStream
 import java.io.OutputStream
@@ -45,7 +47,9 @@ class SettingsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         //val captureUrl = "https://i.imgur.com/4HFRb2z.jpg"
-        val captureUrl = "http://192.168.178.66/capture"
+        //val captureUrl = "http://192.168.178.66/capture" //AT HOME
+        val captureUrl = "http://192.168.134.213/capture"
+
         imageView = view.findViewById(R.id.captureImg)
         button = view.findViewById(R.id.captureBtn)
 
