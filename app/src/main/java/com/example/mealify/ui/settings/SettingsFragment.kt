@@ -55,28 +55,23 @@ class SettingsFragment : Fragment() {
 
         try {
             button.setOnClickListener {
-                var test : Array<String> = emptyArray()
-                try{
-                    callAPI(test)
-                } catch (e: Exception) {
-                    e.printStackTrace()
-                }
-
+                // var test : Array<String> = emptyArray()
+                // callAPI(test)
                 try {
                     Glide.with(imageView.context)
                         .clear(imageView)
                 } catch (e: java.lang.Exception) {
                     e.printStackTrace()
                 }
-                //try {
-                //    Glide.with(this@SettingsFragment.requireContext())
-                //        .load(captureUrl)
-                //        .apply(RequestOptions.skipMemoryCacheOf(true))
-                //        .apply(RequestOptions.diskCacheStrategyOf(DiskCacheStrategy.NONE))
-                //        .into(imageView)
-                //} catch (e: java.lang.Exception) {
-                //    e.printStackTrace()
-                //}
+                try {
+                    Glide.with(this@SettingsFragment.requireContext())
+                        .load(captureUrl)
+                        .apply(RequestOptions.skipMemoryCacheOf(true))
+                        .apply(RequestOptions.diskCacheStrategyOf(DiskCacheStrategy.NONE))
+                        .into(imageView)
+                } catch (e: java.lang.Exception) {
+                    e.printStackTrace()
+                }
             }
         } catch (e: Exception) {
             e.printStackTrace()
