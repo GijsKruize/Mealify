@@ -48,8 +48,8 @@ class SettingsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         //val captureUrl = "https://i.imgur.com/4HFRb2z.jpg"
         //val captureUrl = "http://192.168.178.66/capture" //AT HOME
-        val captureUrl = "http://192.168.134.213/capture"
-
+        //val captureUrl = "http://192.168.134.213/capture"
+        val captureUrl = "https://i.imgur.com/85wyR2x.jpg?fb" // Apple
         imageView = view.findViewById(R.id.captureImg)
         button = view.findViewById(R.id.captureBtn)
 
