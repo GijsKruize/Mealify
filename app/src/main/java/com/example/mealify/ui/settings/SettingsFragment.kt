@@ -3,6 +3,7 @@ package com.example.mealify.ui.settings
 import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
+import android.graphics.drawable.BitmapDrawable
 import android.net.Uri
 import android.os.Bundle
 import android.os.Environment
@@ -20,11 +21,15 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.request.RequestOptions
 import com.bumptech.glide.signature.ObjectKey
+import com.chaquo.python.PyObject
+import com.chaquo.python.Python
+import com.chaquo.python.android.AndroidPlatform
 import com.example.mealify.R
 import com.example.mealify.databinding.FragmentSettingsBinding
 import com.example.mealify.gooogleVision.callAPI
 import kotlinx.coroutines.*
 import org.jsoup.parser.Tag
+import java.io.ByteArrayOutputStream
 import java.io.File
 import java.io.FileOutputStream
 import java.io.OutputStream
@@ -35,12 +40,16 @@ class SettingsFragment : Fragment() {
     private lateinit var imageView: ImageView
     private lateinit var button: Button
 
+    var imageString = ""
+
+    var count = 0
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-
+        initPython()
         return inflater.inflate(R.layout.fragment_settings, container, false)
     }
 
@@ -72,6 +81,17 @@ class SettingsFragment : Fragment() {
                 } catch (e: java.lang.Exception) {
                     e.printStackTrace()
                 }
+                try {
+                    if (count > 0) {
+                        var drawable = imageView.drawable as? BitmapDrawable
+                        var bitmap = drawable?.bitmap
+                        imageString = getStringImage(bitmap)
+                        getPythonScript()
+                    }
+                } catch (e: Exception) {
+                    e.printStackTrace()
+                }
+                count += 1
             }
         } catch (e: Exception) {
             e.printStackTrace()
@@ -86,6 +106,25 @@ class SettingsFragment : Fragment() {
             e.printStackTrace()
         }
 
+    }
+
+    private fun initPython() {
+        if (!Python.isStarted()) {
+            Python.start(AndroidPlatform(requireContext()))
+        }
+    }
+
+    private fun getPythonScript(): PyObject? {
+        val python = Python.getInstance()
+        val pythonFile = python.getModule("test")
+        return pythonFile.callAttr("objectRecognition")
+    }
+
+    private fun getStringImage(bitmap: Bitmap?): String {
+        val baos = ByteArrayOutputStream()
+        bitmap?.compress(Bitmap.CompressFormat.PNG, 100, baos)
+        val imageBytes = baos.toByteArray()
+        return android.util.Base64.encodeToString(imageBytes, 0)
     }
 
     private fun saveImage(image: Bitmap?): String? {

@@ -10,7 +10,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.mealify.R
 import com.example.mealify.data.ProductGenerator.genProductNames
 import com.example.mealify.data.ProductGenerator.genProductPics
-import com.example.mealify.data.ProductGenerator.generateProductsArray
 
 
 class ProductFragment : Fragment() {
