@@ -26,10 +26,6 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
 
     val captureUrl = "https://forcommonground.files.wordpress.com/2018/01/apples-bananas.jpg?w=640"
-    private lateinit var bitmap: Bitmap
-    private lateinit var drawable: BitmapDrawable
-
-    var imageString = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,6 +36,8 @@ class MainActivity : AppCompatActivity() {
         setSupportActionBar(binding.appBarMain.toolbar)
 
         binding.appBarMain.fab.setOnClickListener {
+            finish()
+            startActivity(intent)
         }
 
         val drawerLayout: DrawerLayout = binding.drawerLayout

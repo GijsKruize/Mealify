@@ -7,35 +7,18 @@ from PIL import Image
 import io
 
 im = None
-url = "https://forcommonground.files.wordpress.com/2018/01/apples-bananas.jpg?w=640"
+url = "http://192.168.78.213/capture"
 
 
 def objectRecognition():
     img_resp = requests.get(url)
-    imgnp = np.array(bytearray(img_resp.content), dtype=np.uint8)
-    im = cv2.imdecode(imgnp, -1)
+    imgnp = bytearray(img_resp.content)
+    im = cv2.imdecode(np.array(imgnp), -1)
 
-    label = cv.detect_common_objects(im)
+    bbox, label, conf = cv.detect_common_objects(im)
 
-    labelString = ', '.join(label[1])
-    return labelString
-
-
-def helloWorld():
-    return "Hello world!"
-
-
-def main(data):
-
-    decodedData = base64.b64decode(data)
-    npData = np.fromstring(decodedData, np.uint8)
-    img = cv2.imdecode(npData, cv2.IMREAD_UNCHANGED)
-
-    foo, label, faa = cv.detect_common_objects(img)
-    labelString = ','.join(label)
-
-    return labelString
+    return label
 
 
 if __name__ == "__main__":
-    main()
+    print(objectRecognition())
