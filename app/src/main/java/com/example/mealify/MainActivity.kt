@@ -1,8 +1,10 @@
 package com.example.mealify
 
+import android.graphics.Bitmap
+import android.graphics.drawable.BitmapDrawable
 import android.os.Bundle
 import android.view.Menu
-import android.widget.Toast
+import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.findNavController
@@ -15,20 +17,22 @@ import com.chaquo.python.Python
 import com.chaquo.python.android.AndroidPlatform
 import com.example.mealify.databinding.ActivityMainBinding
 import com.google.android.material.navigation.NavigationView
+import java.io.ByteArrayOutputStream
 
 
-@Suppress("DEPRECATION")
 class MainActivity : AppCompatActivity() {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityMainBinding
-    val captureUrl = "https://i.imgur.com/85wyR2x.jpg?fb"
 
+    val captureUrl = "https://forcommonground.files.wordpress.com/2018/01/apples-bananas.jpg?w=640"
+    private lateinit var bitmap: Bitmap
+    private lateinit var drawable: BitmapDrawable
+
+    var imageString = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        initPython()
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -36,13 +40,6 @@ class MainActivity : AppCompatActivity() {
         setSupportActionBar(binding.appBarMain.toolbar)
 
         binding.appBarMain.fab.setOnClickListener {
-            try {
-                Toast.makeText(this@MainActivity, getPythonScript(), Toast.LENGTH_SHORT).show()
-            } catch (e: Exception) {
-                e.printStackTrace()
-            }
-
-
         }
 
         val drawerLayout: DrawerLayout = binding.drawerLayout
@@ -70,18 +67,5 @@ class MainActivity : AppCompatActivity() {
         val navController = findNavController(R.id.nav_host_fragment_content_main)
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
     }
-
-    private fun initPython() {
-        if (!Python.isStarted()) {
-            Python.start(AndroidPlatform(this))
-        }
-    }
-
-    private fun getPythonScript(): String {
-        val python = Python.getInstance()
-        val pythonFile = python.getModule("test")
-        return pythonFile.callAttr("objectRecognition").toString()
-    }
-
 }
 

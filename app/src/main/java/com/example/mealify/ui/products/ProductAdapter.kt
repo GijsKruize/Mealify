@@ -22,7 +22,6 @@ class ProductAdapter(private val productList: ArrayList<Products>) :
         val currentProduct = productList[position]
         holder.productImage.setImageResource(currentProduct.productImage)
         holder.productName.text = currentProduct.productName
-        holder.productDate.text = currentProduct.productDate
 
         //Commented out for now
         //val model: ProductModel = courseModelArrayList[position]
@@ -40,6 +39,5 @@ class ProductAdapter(private val productList: ArrayList<Products>) :
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
          val productImage: ImageView = itemView.findViewById(R.id.idProductImage)
          val productName: TextView = itemView.findViewById(R.id.idProductName)
-         val productDate: TextView = itemView.findViewById(R.id.idProductDate)
     }
 }
