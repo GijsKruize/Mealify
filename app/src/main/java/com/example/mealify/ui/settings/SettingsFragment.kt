@@ -40,8 +40,7 @@ class SettingsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val captureUrl = "http://192.168.78.213/capture"
-        //val captureUrl = "https://i.imgur.com/85wyR2x.jpg?fb" // Apple
+        val captureUrl = "http://192.168.42.213/capture"
         imageView = view.findViewById(R.id.captureImg)
         button = view.findViewById(R.id.captureBtn)
 

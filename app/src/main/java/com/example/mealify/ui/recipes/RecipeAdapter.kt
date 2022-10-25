@@ -26,6 +26,7 @@ class RecipeAdapter(private val recipeList: ArrayList<Recipes>) :
         val currentRecipe = recipeList[position]
         holder.recipeImage.setImageResource(currentRecipe.recipeImage)
         holder.recipeName.text = currentRecipe.recipeName
+        holder.recipeDate.text = currentRecipe.recipeDate
         //holder.recipeDescription.text = currentRecipe.recipeDescription
 
         //OnClickListener to go from recipe list to description of recipe
@@ -40,6 +41,8 @@ class RecipeAdapter(private val recipeList: ArrayList<Recipes>) :
             bundle.putString("recipeName", currentRecipe.recipeName)
             bundle.putInt("recipeImage", currentRecipe.recipeImage)
             bundle.putString("recipeDesc", currentRecipe.recipeDescription)
+            bundle.putString("recipeDate", currentRecipe.recipeDate)
+            bundle.putString("recipeIngredients", currentRecipe.recipeIngredients)
             descriptionsFragment.arguments = bundle
 
             //Change the RecipeFragment to DescriptionFragment
@@ -57,6 +60,6 @@ class RecipeAdapter(private val recipeList: ArrayList<Recipes>) :
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val recipeImage: ImageView = itemView.findViewById(R.id.idRecipeImage)
         val recipeName: TextView = itemView.findViewById(R.id.idRecipeName)
-
+        val recipeDate: TextView = itemView.findViewById(R.id.idRecipeDate)
     }
 }

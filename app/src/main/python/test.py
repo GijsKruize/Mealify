@@ -1,13 +1,11 @@
-import base64
 import cv2
 import cvlib as cv
 import numpy as np
 import requests
 from PIL import Image
-import io
 
 im = None
-url = "http://192.168.78.213/capture"
+url = "http://192.168.42.213/capture"
 
 
 def objectRecognition():
@@ -16,6 +14,10 @@ def objectRecognition():
     im = cv2.imdecode(np.array(imgnp), -1)
 
     bbox, label, conf = cv.detect_common_objects(im)
+
+    # for i in range(len(label)):
+    #     if label[i] == "dining table":
+    #         label.pop(i)
 
     return label
 
