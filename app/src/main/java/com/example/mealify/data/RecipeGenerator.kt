@@ -9,15 +9,15 @@ object RecipeGenerator {
     val readurl: String = "test"
     val Salad = RecipeData(
         "Fruit Salad",
-        arrayOf("apple", "banana"),
-        "Apple, Banana, Salt, Pepper",
-        "20 minutes",
-        R.drawable.apple,
-        "put everything in a bowl and cut it up"
+        arrayOf("apple", "banana", "orange"),
+        "Ingredients:  Apple, Banana, Orange, 2tbs of sugar",
+        "5 minutes",
+        R.drawable.fruit_salad,
+        "Remove the core from the apple, and cut it up in to cubes of around 2 cm." + " Peal the orange and cut the wedges in 3 pieces." + " Peal the banana and cut it into 1.5 cm slices." + " Add everything into a bowl, optionally you can add 2 tbs of sugar to make it sweeter"
     )
     val Salad1 = RecipeData(
         "Pear and lettuce Salad",
-        arrayOf("pear", "lettuce"),
+        arrayOf("carrot", "apple"),
         "Pear, lettuce, Salt, Pepper",
         "20 minutes",
         R.drawable.pear,
@@ -79,5 +79,21 @@ object RecipeGenerator {
         return recipeDescription
     }
 
+    fun genRecipeTime(input: String): Array<String> {
+        val possibleRecipeData = checkPossible(input)
+        var recipeTime : Array<String> = emptyArray()
+        for(item in possibleRecipeData){
+            recipeTime += item.time
+        }
+        return recipeTime
+    }
 
+    fun genRecipeIngredients(input: String): Array<String> {
+        val possibleRecipeData = checkPossible(input)
+        var recipeIngredients : Array<String> = emptyArray()
+        for(item in possibleRecipeData){
+            recipeIngredients += item.actIngredients
+        }
+        return recipeIngredients
+    }
 }
