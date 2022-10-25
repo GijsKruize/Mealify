@@ -79,5 +79,21 @@ object RecipeGenerator {
         return recipeDescription
     }
 
+    fun genRecipeTime(input: String): Array<String> {
+        val possibleRecipeData = checkPossible(input)
+        var recipeTime : Array<String> = emptyArray()
+        for(item in possibleRecipeData){
+            recipeTime += item.time
+        }
+        return recipeTime
+    }
 
+    fun genRecipeIngredients(input: String): Array<String> {
+        val possibleRecipeData = checkPossible(input)
+        var recipeIngredients : Array<String> = emptyArray()
+        for(item in possibleRecipeData){
+            recipeIngredients += item.actIngredients
+        }
+        return recipeIngredients
+    }
 }
